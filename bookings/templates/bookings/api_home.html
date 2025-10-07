@@ -1,0 +1,10 @@
+{% extends 'bookings/base.html' %}
+{% block title %}API Home{% endblock %}
+{% block content %}
+<h2>Welcome to the Movie Theater API</h2>
+<ul>
+    <li><a href="{% url 'movie_list' %}">Movie List</a></li>
+    <li><a href="{% url 'booking_history' %}">Booking History</a></li>
+    <li><a href="{% url 'book_seat' movie_id=1 %}">Book Seat for Movie 1</a></li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'bookings/base.html' %}
+{% block title %}Booking History{% endblock %}
+
+{% block content %}
+<h2>Booking History</h2>
+
+{% if bookings %}
+  <table class="table table-bordered mt-3">
+    <thead>
+      <tr>
+        <th>Movie</th>
+        <th>Seat</th>
+        <th>Date & Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for booking in bookings %}
+        <tr>
+          <td>{{ booking.movie.title }}</td>
+          <td>{{ booking.seat.seat_number }}</td>
+          <td>{{ booking.booking_date|date:"M d, Y H:i" }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% else %}
+  <p>No bookings have been made yet.</p>
+{% endif %}
+{% endblock %}

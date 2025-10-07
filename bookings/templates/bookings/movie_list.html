@@ -1,0 +1,31 @@
+
+
+<script>
+    fetch('/api/movies/')
+      .then(response => response.json())
+      .then(data => {
+        const container = document.getElementById('movie-data');
+        data.forEach(movie => {
+          const item = document.createElement('div');
+          item.innerHTML = `<h5>${movie.title}</h5><p>${movie.description}</p>`;
+          container.appendChild(item);
+        });
+      });
+    </script>
+    
+    <div id="movie-data"></div>
+    
+{% extends 'bookings/base.html' %}
+{% block title %}Movie List{% endblock %}
+{% block content %}
+<h2>Available Movies</h2>
+<ul class="list-group">
+    {% for movie in movies %}
+    <li class="list-group-item">
+        <h5>{{ movie.title }}</h5>
+        <p>{{ movie.description }}</p>
+        <a href="{% url 'book_seat' movie.id %}" class="btn btn-primary">Book Now</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
